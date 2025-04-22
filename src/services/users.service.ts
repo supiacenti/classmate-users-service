@@ -19,17 +19,20 @@ export const createUser = (name: string, email: string, role: 'ADMIN' | 'MEMBER'
   return newUser
 }
 
-export const updateUser = (id: string, name: string, email: string): User | null => {
-  const user = users.find(u => u.id === id)
-  if (!user) return null
-
+export const updateUser = (id: string, name: string, email: string) => {
+  const user = users.find((u) => u.id === id)
+  if (!user) throw new Error('Usuário não encontrado')
   user.name = name
   user.email = email
   return user
 }
 
-export const deleteUser = (id: string): boolean => {
-  const originalLength = users.length
-  users = users.filter(u => u.id !== id)
-  return users.length < originalLength
+export const deleteUser = (id: string) => {
+  const index = users.findIndex((u) => u.id === id)
+  if (index === -1) throw new Error('Usuário não encontrado')
+  users.splice(index, 1)
+  return true
 }
+
+// Expor somente para testes
+export const __TEST__USERS__ = users

@@ -4,6 +4,10 @@
 
 ---
 
+## Testes
+
+![CI](https://github.com/supiacenti/classmate-users-service/actions/workflows/ci.yml/badge.svg)
+
 ## 🚀 Como rodar
 
 ```bash
