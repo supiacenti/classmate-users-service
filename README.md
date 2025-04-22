@@ -1,71 +1,80 @@
-# 🔐 Auth Service — ClassMate
+# 👥 Users Service — ClassMate
 
-> Microsserviço responsável por autenticação de usuários (login, cadastro e emissão de JWT).
+> Microsserviço responsável pelo gerenciamento de usuários (criação, listagem, atualização e remoção).
 
 ---
 
 ## Testes
 
-![CI](https://github.com/supiacenti/classmate-users-service/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/supiacenti/classmate-users-service/actions/workflows/ci.yml/badge.svg)  
+Cobertura: ![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 
-## 🚀 Como rodar
+---
 
-```bash
-npm install
-cp .env.example .env
-npm run dev
-```
+## 🚀 Como rodar localmente
+
+1. Instale as dependências: `npm install`  
+2. Copie o arquivo de exemplo: `cp .env.example .env`  
+3. Inicie em modo desenvolvimento: `npm run dev`
+
+---
 
 ## ⚙️ Variáveis de Ambiente
 
 ```
 PORT=5003
-JWT_SECRET=algumasecretkeyfortoken
 ```
+
+---
 
 ## 🧪 Rotas da API
 
-### GET /users
+### GET /users  
 Lista todos os usuários
 
-### GET /users/:id
-Busca usuário por ID
+### GET /users/:id  
+Busca um usuário por ID
 
-### POST /users
-Cria novo usuário
+### POST /users  
+Cria um novo usuário  
+Body:
 
-### PUT /users/:id
-Atualiza usuário
-
-### DELETE /users/:id
-Remove usuário
-
-## 🐳 Docker
-
+```json
+{
+  "name": "Fulano",
+  "email": "fulano@email.com",
+  "role": "ADMIN"
+}
 ```
-docker build -t classmate-users-service .
-docker run -p 5003:5003 classmate-users-service
+
+### PUT /users/:id  
+Atualiza um usuário existente  
+Body:
+
+```json
+{
+  "name": "Novo Nome",
+  "email": "novo@email.com"
+}
 ```
+
+### DELETE /users/:id  
+Remove um usuário
+
+---
 
 ## 📦 Estrutura
 
-``` css
+```css
 src/
 ├── controllers/
 ├── routes/
 ├── services/
 ├── models/
-├── middlewares/
 └── index.ts
 ```
 
-## 🛡️ Autenticação
-
-As rotas protegidas usam JWT. Para acessar, envie:
-
-``` makefile
-Authorization: Bearer <seu_token_jwt>
-```
+---
 
 ## 🧰 Scripts
 

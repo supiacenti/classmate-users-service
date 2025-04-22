@@ -1,7 +1,22 @@
 import { User } from '../models/user.model'
 import { v4 as uuidv4 } from 'uuid'
 
-let users: User[] = []
+//let users: User[] = []
+
+let users: User[] = [
+  {
+    id: '1',
+    name: 'Isabela',
+    email: 'mario@admin.com',
+    role: 'ADMIN'
+  },
+  {
+    id: '2',
+    name: 'João',
+    email: 'joao@student.com',
+    role: 'MEMBER'
+  }
+]
 
 export const getAllUsers = (): User[] => users
 
